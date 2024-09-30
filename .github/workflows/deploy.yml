@@ -46,7 +46,7 @@ jobs:
       - name: Copy artifacts
         run: |
           mkdir github-pages &&
-          cp dist github-pages &&
+          cp -r dist github-pages &&
           ls github-pages
 
       - name: Deploy to Github Pages
