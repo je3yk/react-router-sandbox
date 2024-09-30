@@ -43,11 +43,15 @@ jobs:
       - name: Build app
         run: pnpm build
 
-      - name: Copy artifacts
-        run: |
-          mkdir github-pages &&
-          cp -r dist github-pages &&
-          ls github-pages
+      - name: Dist listing
+        run: ls dist
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+           name: github-pages
+           path: dist
+           
 
       - name: Deploy to Github Pages
         id: deployment
