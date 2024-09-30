@@ -1,5 +1,6 @@
 {
   "name": "react-router-tutorial",
+  "homepage": "https://je3yk.github.io/react-router-sandbox/",
   "private": true,
   "engines": {
     "node": ">=18.0.0"
