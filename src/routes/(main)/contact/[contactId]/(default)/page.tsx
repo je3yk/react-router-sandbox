@@ -1,20 +1,10 @@
-import { Form, useLoaderData } from "react-router-dom";
-import { ContactType, getContact } from "../../../contacts";
+import {Form, useRouteLoaderData} from 'react-router-dom';
 
-export type ContactPageData = {
-    contact: ContactType | null;
-}
+import {ContactType} from '../../../../../contacts';
+import {ContactPageData} from '../type';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type FIXME = any;
-
-export async function loader({params}: FIXME): Promise<ContactPageData> {
-    const contact = await getContact(params.contactId);
-    return {contact};
-}
-
-export default function Contact() {
-  const { contact } = useLoaderData() as ContactPageData;
+export function ContactIndexPage() {
+  const {contact} = useRouteLoaderData('contact') as ContactPageData;
 
   if (!contact) {
     // Something should happen here
@@ -35,13 +25,11 @@ export default function Contact() {
 
       <div>
         <h1>
-          {contact.first || contact.last ? (
+          {contact.first || contact.last ?
             <>
               {contact.first} {contact.last}
             </>
-          ) : (
-            <i>No Name</i>
-          )}{" "}
+          : <i>No Name</i>}{' '}
           <Favorite contact={contact} />
         </h1>
 
@@ -66,11 +54,7 @@ export default function Contact() {
             method="post"
             action="destroy"
             onSubmit={(event) => {
-              if (
-                !confirm(
-                  "Please confirm you want to delete this record."
-                )
-              ) {
+              if (!confirm('Please confirm you want to delete this record.')) {
                 event.preventDefault();
               }
             }}
@@ -83,20 +67,16 @@ export default function Contact() {
   );
 }
 
-function Favorite({ contact }: { contact: ContactType}) {
+function Favorite({contact}: {contact: ContactType}) {
   const favorite = contact.favorite;
   return (
     <Form method="post">
       <button
         name="favorite"
-        value={favorite ? "false" : "true"}
-        aria-label={
-          favorite
-            ? "Remove from favorites"
-            : "Add to favorites"
-        }
+        value={favorite ? 'false' : 'true'}
+        aria-label={favorite ? 'Remove from favorites' : 'Add to favorites'}
       >
-        {favorite ? "★" : "☆"}
+        {favorite ? '★' : '☆'}
       </button>
     </Form>
   );
