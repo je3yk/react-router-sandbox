@@ -2,7 +2,7 @@ import {Form, useRouteLoaderData} from 'react-router-dom';
 
 import {ContactPageData} from '../type';
 
-export function EditContact() {
+export function EditContactPage() {
   const {contact} = useRouteLoaderData('contact') as ContactPageData;
 
   return (

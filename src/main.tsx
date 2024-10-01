@@ -5,7 +5,7 @@ import {createHashRouter, RouterProvider} from 'react-router-dom';
 
 import './index.css';
 
-import {MainRoute} from './routes/(main)/route';
+import MainRoute from './routes';
 
 const router = createHashRouter([MainRoute]);
 
