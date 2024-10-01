@@ -1,9 +1,9 @@
 import {Form, useRouteLoaderData} from 'react-router-dom';
 
-import {ContactType} from '../../../../../contacts';
-import {ContactPageData} from '../type';
+import {ContactType} from '../../../contacts';
+import {ContactPageData} from './type';
 
-export function ContactIndexPage() {
+export default function ContactPage() {
   const {contact} = useRouteLoaderData('contact') as ContactPageData;
 
   if (!contact) {
@@ -17,7 +17,7 @@ export function ContactIndexPage() {
         <img
           key={contact.avatar}
           src={
-            contact.avatar ||
+            contact.avatar ??
             `https://robohash.org/${contact.id}.png?size=200x200`
           }
         />

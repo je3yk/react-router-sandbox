@@ -7,7 +7,7 @@ export const SearchBox = () => {
         id="search-form"
         role="search"
       >
-        <input
+        {/* <input
           id="q"
           aria-label="Search contacts"
           placeholder="Search"
@@ -22,10 +22,18 @@ export const SearchBox = () => {
         <div
           className="sr-only"
           aria-live="polite"
-        ></div>
+        ></div> */}
       </form>
-      <Form method="post">
-        <button type="submit">New</button>
+      <Form
+        method="post"
+        style={{width: '100%'}}
+      >
+        <button
+          type="submit"
+          style={{width: '100%'}}
+        >
+          New contact
+        </button>
       </Form>
     </div>
   );
