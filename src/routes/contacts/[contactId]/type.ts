@@ -1,4 +1,4 @@
-import {ContactType} from '../../../../contacts';
+import {ContactType} from '../../../contacts';
 
 export type ContactPageData = {
   contact: ContactType | null;

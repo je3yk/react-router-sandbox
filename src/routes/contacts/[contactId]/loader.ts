@@ -1,4 +1,4 @@
-import {getContact} from '../../../../contacts';
+import {getContact} from '../../../contacts';
 import {ContactPageData} from './type';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

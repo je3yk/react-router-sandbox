@@ -1,7 +1,7 @@
 import {Outlet} from 'react-router-dom';
 
-import {NavBar} from '../../components/NavBar';
-import {SearchBox} from '../../components/SearchBox';
+import {NavBar} from './components/NavBar';
+import {SearchBox} from './components/SearchBox';
 
 export function RootLayout() {
   return (

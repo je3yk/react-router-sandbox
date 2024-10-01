@@ -1,20 +1,28 @@
 import {RouteObject} from 'react-router-dom';
 
+import AboutRoute from './about/[name]';
 import {action as rootAction} from './action';
-import {ContactRoute} from './contact/[contactId]/route';
-import ErrorPage from './error-page';
+import ContactRoute from './contacts';
+import {ErrorPage} from './error-page';
 import {RootLayout} from './layout';
 import {loader as rootLoader} from './loader';
-import {TestRoute} from './test/[name]/route';
+import LandingPage from './page';
 
-export const MainRoute: RouteObject = {
+const MainRoute: RouteObject = {
   path: '/',
+  id: 'root',
   element: <RootLayout />,
   errorElement: <ErrorPage />,
   loader: rootLoader,
   action: rootAction,
   children: [
+    {
+      index: true,
+      element: <LandingPage />,
+    },
     ContactRoute,
-    TestRoute,
+    AboutRoute,
   ],
 };
+
+export default MainRoute;

@@ -1,4 +1,4 @@
-import {ContactType, getContacts} from '../../contacts';
+import {ContactType, getContacts} from '../contacts';
 
 export type RootLoaderData = {
   contacts: ContactType[];
