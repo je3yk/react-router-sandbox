@@ -1,7 +1,6 @@
-import {useLoaderData} from 'react-router-dom';
+import {FC} from 'react';
 
-const AboutPage = () => {
-  const {name} = useLoaderData() as {name: string};
+const AboutPage: FC<{name: string}> = ({name}: {name: string}) => {
   return (
     <div>
       <h1>About</h1>
@@ -23,7 +22,5 @@ const AboutPage = () => {
     </div>
   );
 };
-
-AboutPage.displayName = 'AboutPage';
 
 export default AboutPage;

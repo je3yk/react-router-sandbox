@@ -15,7 +15,7 @@ export const ContactCard = ({
 }: ContactCardProps) => {
   return (
     <Link
-      to={`/contacts/${id}`}
+      to={`../contacts/${id}`}
       className="contact-card"
     >
       <img

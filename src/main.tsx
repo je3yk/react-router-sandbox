@@ -1,16 +1,21 @@
-import {StrictMode} from 'react';
+// @ts-expect-error React pages are not found by TS, but it is working
+import routes from '~react-pages';
+
+import {StrictMode, Suspense} from 'react';
 
 import {createRoot} from 'react-dom/client';
 import {createHashRouter, RouterProvider} from 'react-router-dom';
 
 import './index.css';
 
-import MainRoute from './routes';
+const router = createHashRouter(routes);
 
-const router = createHashRouter([MainRoute]);
+console.log(routes);
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <Suspense fallback={<div>Loading...</div>}>
+      <RouterProvider router={router} />
+    </Suspense>
   </StrictMode>,
 );

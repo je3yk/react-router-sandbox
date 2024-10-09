@@ -48,7 +48,9 @@ export async function createContact(newContact?: Partial<ContactType>) {
 export async function getContact(id: ContactType['id']) {
   await fakeNetwork(`contact:${id}`);
   const contacts = (await localforage.getItem('contacts')) as ContactType[];
+  console.log('contacts', contacts);
   const contact = contacts.find((contact) => contact.id === id);
+  console.log('contacts', contact, id);
   return contact ?? null;
 }
 

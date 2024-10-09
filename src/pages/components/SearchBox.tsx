@@ -1,6 +1,11 @@
-import {Form} from 'react-router-dom';
+import {createContact} from '@app/contacts';
 
 export const SearchBox = () => {
+  const handleNewContactCreate = async () => {
+    await createContact();
+    window.location.reload();
+  };
+
   return (
     <div>
       <form
@@ -24,17 +29,13 @@ export const SearchBox = () => {
           aria-live="polite"
         ></div> */}
       </form>
-      <Form
-        method="post"
+      <button
+        type="submit"
         style={{width: '100%'}}
+        onClick={handleNewContactCreate}
       >
-        <button
-          type="submit"
-          style={{width: '100%'}}
-        >
-          New contact
-        </button>
-      </Form>
+        New contact
+      </button>
     </div>
   );
 };

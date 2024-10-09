@@ -18,6 +18,8 @@ const config = {
   experimentalTernaries: true,
   multilineArraysWrapThreshold: 2, // Wrap the array if it has 2 or more elements
   importOrder: [
+    '~react-pages',
+    '',
     '^react$',
     '',
     '<BUILTIN_MODULES>',
