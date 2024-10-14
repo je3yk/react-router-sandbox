@@ -5,6 +5,8 @@ import {getContacts} from '@app/contacts';
 import {NavBar} from '@app/routes/components/NavBar';
 import {SearchBar} from '@app/routes/components/SearchBar';
 
+const isDev = import.meta.env.DEV;
+
 export const Route = createRootRoute({
   loader: async () => {
     const contacts = await getContacts();
@@ -20,7 +22,7 @@ export const Route = createRootRoute({
       <div id="detail">
         <Outlet />
       </div>
-      <TanStackRouterDevtools position="bottom-right" />
+      {isDev && <TanStackRouterDevtools position="bottom-right" />}
     </>
   ),
 });

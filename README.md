@@ -18,8 +18,9 @@ In this example I've used the following packages:
 
 - `@tanstack/router-plugin` - Vite plugin, that handles all necessary operations
   for tanstack router while building the app (also in dev)
-- `@tanstack/router-devtools` - dev tools that can be useful in development. You
-  need to just add the defined component in the app root.
+- `@tanstack/router-devtools` - dev tools for debugging/monitoring in
+  development. In this app this is configured to be available only in
+  development (checkout `src/routes/__root.tsx` line 25)
 - `@tanstack/router-cli` - tools for basic usage of tanstack/react-router. This
   can be used for routes generation, watching changes in the development mode,
   and etc. This is not necessary if you have the Vite plugin.
