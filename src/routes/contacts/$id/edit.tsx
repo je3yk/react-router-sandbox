@@ -1,13 +1,33 @@
-import {Form, useRouteLoaderData} from 'react-router-dom';
+import {
+  createFileRoute,
+  useLoaderData,
+  useRouter,
+} from '@tanstack/react-router';
 
-import {ContactPageData} from '../type';
+import {updateContact} from '@app/contacts';
 
-export function EditContactPage() {
-  const {contact} = useRouteLoaderData('contact') as ContactPageData;
+export const EditPage = () => {
+  const router = useRouter();
+  const {contact} = useLoaderData({from: '/contacts/$id'});
+
+  const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    await updateContact(contact.id, data);
+
+    backToContactPage();
+  };
+
+  const backToContactPage = () => {
+    router.navigate({to: '/contacts/$id', params: {id: contact.id}});
+  };
 
   return (
-    <Form
-      method="post"
+    <form
+      onSubmit={handleFormSubmit}
       id="contact-form"
     >
       <p>
@@ -56,8 +76,17 @@ export function EditContactPage() {
       </label>
       <p>
         <button type="submit">Save</button>
-        <button type="button">Cancel</button>
+        <button
+          type="button"
+          onClick={backToContactPage}
+        >
+          Cancel
+        </button>
       </p>
-    </Form>
+    </form>
   );
-}
+};
+
+export const Route = createFileRoute('/contacts/$id/edit')({
+  component: () => <EditPage />,
+});

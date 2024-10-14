@@ -1,14 +1,15 @@
-import {useLoaderData} from 'react-router-dom';
+import {createFileRoute, useParams} from '@tanstack/react-router';
 
 const AboutPage = () => {
-  const {name} = useLoaderData() as {name: string};
+  const {name} = useParams({from: '/about/$name'});
+
   return (
     <div>
       <h1>About</h1>
       <p>{name} it is a pleasure to meet you!</p>
       <p>
-        This application has been created to test the react router with
-        directory based routing system.
+        This application has been created to test the @tanstack-router with
+        file-based routing system.
       </p>
       <p>
         For more details check the Github repository{' '}
@@ -24,6 +25,6 @@ const AboutPage = () => {
   );
 };
 
-AboutPage.displayName = 'AboutPage';
-
-export default AboutPage;
+export const Route = createFileRoute('/about/$name')({
+  component: () => <AboutPage />,
+});
