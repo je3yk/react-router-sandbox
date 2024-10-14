@@ -12,19 +12,24 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "routes:generate": "tsr generate"
   },
   "dependencies": {
+    "@tanstack/react-router": "^1.64.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.26.1",
-    "sort-by": "^1.2.0"
+    "sort-by": "^1.2.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
     "@ianvs/prettier-plugin-sort-imports": "^4.3.1",
+    "@tanstack/router-cli": "^1.65.0",
+    "@tanstack/router-devtools": "^1.64.0",
+    "@tanstack/router-plugin": "^1.64.0",
     "@tsconfig/vite-react": "^2.0.1",
     "@types/node": "^22.7.4",
     "@types/react": "^18.3.3",

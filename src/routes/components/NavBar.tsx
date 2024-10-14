@@ -1,50 +1,30 @@
-import {NavLink, useLoaderData} from 'react-router-dom';
-
-import {RootLoaderData} from '../loader';
+import {Link, useLoaderData} from '@tanstack/react-router';
 
 export const NavBar = () => {
-  const {contacts} = useLoaderData() as RootLoaderData;
+  const {contacts} = useLoaderData({from: '__root__'});
+
   return (
     <nav>
       <div>
-        <NavLink
-          to="/"
-          className={({isPending}) => {
-            return isPending ? 'pending' : '';
-          }}
-        >
-          Home
-        </NavLink>
-        <NavLink
-          to="contacts"
-          end
-          className={({isActive, isPending}) =>
-            isActive ? 'active'
-            : isPending ? 'pending'
-            : ''
-          }
+        <Link to="/">Home</Link>
+        <Link
+          to="/contacts"
+          activeOptions={{exact: true}}
         >
           Contacts list
-        </NavLink>
+        </Link>
         {contacts.length ?
           <ul>
             {contacts.map((contact) => (
               <li key={contact.id}>
-                <NavLink
-                  to={`contacts/${contact.id}`}
-                  className={({isActive, isPending}) =>
-                    isActive ? 'active'
-                    : isPending ? 'pending'
-                    : ''
-                  }
-                >
+                <Link to={`/contacts/${contact.id}`}>
                   {contact.first || contact.last ?
                     <>
                       {contact.first} {contact.last}
                     </>
                   : <i>No Name</i>}{' '}
                   {contact.favorite && <span>★</span>}
-                </NavLink>
+                </Link>
               </li>
             ))}
           </ul>
@@ -54,16 +34,12 @@ export const NavBar = () => {
         }
       </div>
       <div>
-        <NavLink
-          to={`about/Friend`}
-          className={({isActive, isPending}) =>
-            isActive ? 'active'
-            : isPending ? 'pending'
-            : ''
-          }
+        <Link
+          to="/about/$name"
+          params={{name: 'Friend'}}
         >
           About
-        </NavLink>
+        </Link>
       </div>
     </nav>
   );

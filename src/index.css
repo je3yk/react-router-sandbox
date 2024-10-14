@@ -84,8 +84,24 @@ button:active {
   color: #eeb004;
 }
 
-form[action$='destroy'] button {
+button.destroy {
   color: #f44250;
+}
+
+#contact-controls a {
+  color: #3992ff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-family: inherit;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  box-shadow:
+    0 0px 1px hsla(0, 0%, 0%, 0.2),
+    0 1px 2px hsla(0, 0%, 0%, 0.2);
+  background-color: white;
+  line-height: 1.5;
+  margin: 0;
 }
 
 .sr-only {
@@ -468,4 +484,46 @@ i {
 
 #full-contacts-link:hover {
   background: #2e7ad1;
+}
+
+#search-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#search-bar > button {
+  width: 100%;
+}
+
+#search-bar > form {
+  width: 100%;
+  display: flex;
+  gap: 5px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#filters {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#filters button {
+  box-shadow: none;
+}
+
+#filters button:hover {
+  box-shadow:
+    0 0px 1px hsla(0, 0%, 0%, 0.6),
+    0 1px 2px hsla(0, 0%, 0%, 0.2);
+}
+
+#filters button:active {
+  background: #3992ff;
+  color: white;
 }

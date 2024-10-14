@@ -1,8 +1,6 @@
-import {Link, useRouteLoaderData} from 'react-router-dom';
+import {Link, useLoaderData} from '@tanstack/react-router';
 
 import {ContactType} from '@app/contacts';
-
-import {RootLoaderData} from '../loader';
 
 type LatestContactProps = Pick<ContactType, 'first' | 'last' | 'avatar'> & {
   userId: ContactType['id'];
@@ -28,7 +26,7 @@ const LatestContact = ({userId, first, last, avatar}: LatestContactProps) => {
 };
 
 export const LatestContactsList = () => {
-  const {contacts} = useRouteLoaderData('root') as RootLoaderData;
+  const {contacts} = useLoaderData({from: '__root__'});
 
   if (!contacts || contacts.length === 0) {
     return (
@@ -57,7 +55,7 @@ export const LatestContactsList = () => {
           />
         ))}
         <Link
-          to="contacts"
+          to="/contacts"
           id="full-contacts-link"
         >
           Checkout full contacts list
